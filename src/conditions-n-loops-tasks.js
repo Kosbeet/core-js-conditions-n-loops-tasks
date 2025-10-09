@@ -38,8 +38,14 @@ function isPositive(number) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  if (a > b && a > c) {
+    return a;
+  }
+  if (b > a && b > c) {
+    return b;
+  }
+  return c;
 }
 
 /**
@@ -83,8 +89,14 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if (a + b <= c || c + b <= a || c + a <= b) {
+    return false;
+  }
+  if (a === b || b === c || c === a) {
+    return true;
+  }
+  return true;
 }
 
 /**
@@ -101,8 +113,26 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  const roman = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+  const ten = 'X';
+  if (num < 10) {
+    return roman[num];
+  }
+  if (num % 10 === 0) {
+    let res = '';
+    for (let i = 0; i < num / 10; i += 1) {
+      res += ten;
+    }
+    return res;
+  }
+
+  let res = '';
+  for (let i = 0; i < Math.floor(num / 10); i += 1) {
+    res += ten;
+  }
+  const rem = num % 10;
+  return `${res}${roman[rem]}`;
 }
 
 /**
@@ -136,8 +166,13 @@ function convertNumberToString(/* numberStr */) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let pal = '';
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    pal += str[i];
+  }
+
+  return str === pal;
 }
 
 /**
@@ -154,8 +189,13 @@ function isPalindrome(/* str */) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
-function getIndexOf(/* str, letter */) {
-  throw new Error('Not implemented');
+function getIndexOf(str, letter) {
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === letter) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 /**
