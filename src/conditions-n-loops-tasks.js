@@ -67,8 +67,16 @@ function getMaxNumber(a, b, c) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
+function canQueenCaptureKing(queen, king) {
+  if (
+    queen.x === king.x ||
+    queen.y === king.y ||
+    Math.abs(queen.x - king.x) === Math.abs(queen.y - king.y)
+  ) {
+    return true;
+  }
+
+  return false;
 }
 
 /**
@@ -150,8 +158,62 @@ function convertToRomanNumerals(num) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let res = '';
+
+  for (let i = 0; i < numberStr.length; i += 1) {
+    let current = '';
+    switch (numberStr[i]) {
+      case '1':
+        current = 'one';
+        break;
+      case '2':
+        current = 'two';
+        break;
+      case '3':
+        current = 'three';
+        break;
+      case '4':
+        current = 'four';
+        break;
+      case '5':
+        current = 'five';
+        break;
+      case '6':
+        current = 'six';
+        break;
+      case '7':
+        current = 'seven';
+        break;
+      case '8':
+        current = 'eight';
+        break;
+      case '9':
+        current = 'nine';
+        break;
+      case '0':
+        current = 'zero';
+        break;
+      case '-':
+        current = 'minus';
+        break;
+      case '.':
+        current = 'point';
+        break;
+      case ',':
+        current = 'point';
+        break;
+      default:
+        current = '';
+        break;
+    }
+    res += current;
+    if (numberStr[i + 1]) {
+      res += ' ';
+    }
+  }
+
+  return res;
 }
 
 /**
